@@ -1,5 +1,5 @@
 ﻿
-namespace Tic_Tac_Toe
+namespace TicTacToe
 {
     public enum TurnType
     {

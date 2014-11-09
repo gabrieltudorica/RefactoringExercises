@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Windows.Forms;
 
-namespace Tic_Tac_Toe
+namespace TicTacToe
 {
     public class Logic
     {
@@ -13,6 +13,22 @@ namespace Tic_Tac_Toe
         public Logic(List<Button> cells)
         {
             this.cells = cells;
+        }
+
+        public void UpdateNumberOfMoves()
+        {
+            maxMoves--;
+        }
+
+        public bool IsDraw()
+        {
+            Debug.Assert(maxMoves >= 0, "MaxMoves should stop at 0");
+            return maxMoves == 0;
+        }
+
+        public string GetWinner()
+        {
+            return winner;
         }
 
         public bool IsGameOver()
@@ -69,22 +85,6 @@ namespace Tic_Tac_Toe
 
             winner = cell1.Text;            
             return true;
-        }
-
-        public void UpdateNumberOfMoves()
-        {
-            maxMoves--;
-        }
-
-        public string GetWinner()
-        {
-            return winner;
-        }
-
-        public bool IsDraw()
-        {
-            Debug.Assert(maxMoves >= 0, "MaxMoves should stop at 0");
-            return maxMoves == 0;
-        }
+        }      
     }
 }
