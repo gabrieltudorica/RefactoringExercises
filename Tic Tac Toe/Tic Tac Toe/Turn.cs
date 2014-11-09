@@ -6,7 +6,6 @@
         private const string CrossSymbol = "X";
 
         private TurnType current;
-        private int maxTurns = 9;
 
         public Turn()
         {
@@ -25,8 +24,6 @@
 
         public void Change()
         {
-            maxTurns--;
-
             if (current == TurnType.Cross)
             {
                 current = TurnType.Nought;
@@ -35,11 +32,5 @@
 
             current = TurnType.Cross;
         }
-
-        public int GetRemainingTurns()
-        {
-            return maxTurns;
-        }
-
     }
 }
