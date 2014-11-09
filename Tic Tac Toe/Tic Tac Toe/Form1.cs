@@ -37,7 +37,7 @@ namespace Tic_Tac_Toe
         private Button CreateButton()
         {
             var button = new Button {Width = 100, Height = 100};
-            button.Click += Form1_Click;
+            button.Click += OnButton_Click;
 
             return button;
         }
@@ -47,15 +47,12 @@ namespace Tic_Tac_Toe
             flowLayoutPanel1.Controls.Add(button);
         }
 
-        private int flag;
-        private int draw;
-
         private void ClearBoard()
         {
             for (int i = 0; i < 9; i++)            
                 ClearCell(i);            
 
-            draw = 0;
+            turn = new Turn();
         }
 
         private void ClearCell(int i)
@@ -63,30 +60,20 @@ namespace Tic_Tac_Toe
             buttons[i].Enabled = true;
             buttons[i].Text = "";
         }
+        private Turn turn = new Turn();
 
-        void Form1_Click(object sender, EventArgs e)
-        {
-            Button bt = (Button)sender;
-            if (flag == 0)
-            {
-                bt.Text = "X";
-                label10.Text = "O";
-                flag = 1;
+        private void OnButton_Click(object sender, EventArgs e)
+        {           
+            Button button = (Button)sender;
+            button.Text = turn.GetCurrentSymbol();
+            
+            turn.Change();
+            nextTurn.Text = turn.GetCurrentSymbol();
 
-            }
-            else
-            {
-                bt.Text = "O";
-                label10.Text = "X";
-                flag = 0;
-            }
-            bt.Enabled = false;
+            button.Enabled = false;
 
-            draw++;
-
-            //call check funtion for conditions
             check();
-            if (draw == 9)
+            if (turn.GetRemainingTurns() == 0)
             {
                 MessageBox.Show("Game Draw");
                 d++;
