@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe.UI", "Tic Tac Toe\TicTacToe.UI.csproj", "{4E61DDE6-773C-49CA-A913-7F215A3160CB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe.UI", "TicTacToe.UI\TicTacToe.UI.csproj", "{4E61DDE6-773C-49CA-A913-7F215A3160CB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe.Game", "TicTacToe.Logic\TicTacToe.Game.csproj", "{029CC255-C764-419C-A897-51EF396E3F06}"
 EndProject
