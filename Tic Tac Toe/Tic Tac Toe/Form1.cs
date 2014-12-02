@@ -57,6 +57,7 @@ namespace TicTacToe
 
         private void AddButtonToBoard(Button button)
         {
+            board.Width = 350;
             board.Controls.Add(button);
         }
 
