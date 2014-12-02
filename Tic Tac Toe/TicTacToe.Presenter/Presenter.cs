@@ -26,6 +26,7 @@ namespace TicTacToe.MVP
         {
             board.NewGame();
             viewModel = new ViewModel();
+            UpdateView();
         }
 
         public void MarkMove(int cellIndex)
