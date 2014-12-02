@@ -8,8 +8,8 @@
     <ProjectGuid>{4E61DDE6-773C-49CA-A913-7F215A3160CB}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TicTacToe</RootNamespace>
-    <AssemblyName>TicTacToe</AssemblyName>
+    <RootNamespace>TicTacToe.UI</RootNamespace>
+    <AssemblyName>TicTacToe.UI</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -35,6 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -46,19 +47,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="BoardView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="BoardView.Designer.cs">
+      <DependentUpon>BoardView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Logic.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Turn.cs" />
-    <Compile Include="TurnType.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="BoardView.resx">
+      <DependentUpon>BoardView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -70,6 +68,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="App.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -79,6 +78,16 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TicTacToe.Logic\TicTacToe.Game.csproj">
+      <Project>{029cc255-c764-419c-a897-51ef396e3f06}</Project>
+      <Name>TicTacToe.Game</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TicTacToe.Presenter\TicTacToe.MVP.csproj">
+      <Project>{94adf412-c12c-4342-a1cc-fe4d001a9449}</Project>
+      <Name>TicTacToe.MVP</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
