@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Windows.Forms;
 using TicTacToe.Game;
@@ -32,8 +31,8 @@ namespace TicTacToe.UI
         {
             var button = new Button
             {
-                Width = 100, 
-                Height = 100, 
+                Width = int.Parse(ConfigurationManager.AppSettings["ButtonSizeInPixels"]),
+                Height = int.Parse(ConfigurationManager.AppSettings["ButtonSizeInPixels"]), 
                 Name = buttonIndex.ToString()
             };
 
