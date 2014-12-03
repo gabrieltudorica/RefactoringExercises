@@ -46,7 +46,7 @@
     <Compile Include="ViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TicTacToe.Logic\TicTacToe.Game.csproj">
+    <ProjectReference Include="..\TicTacToe.Game\TicTacToe.Game.csproj">
       <Project>{029cc255-c764-419c-a897-51ef396e3f06}</Project>
       <Name>TicTacToe.Game</Name>
     </ProjectReference>

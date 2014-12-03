@@ -80,11 +80,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TicTacToe.Logic\TicTacToe.Game.csproj">
+    <ProjectReference Include="..\TicTacToe.Game\TicTacToe.Game.csproj">
       <Project>{029cc255-c764-419c-a897-51ef396e3f06}</Project>
       <Name>TicTacToe.Game</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TicTacToe.Presenter\TicTacToe.MVP.csproj">
+    <ProjectReference Include="..\TicTacToe.MVP\TicTacToe.MVP.csproj">
       <Project>{94adf412-c12c-4342-a1cc-fe4d001a9449}</Project>
       <Name>TicTacToe.MVP</Name>
     </ProjectReference>
