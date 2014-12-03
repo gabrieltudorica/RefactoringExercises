@@ -1,6 +1,6 @@
 ﻿namespace TicTacToe.Game
 {
-    public enum SymbolTypes
+    public enum SymbolType
     {
         Cross,
         Nought,

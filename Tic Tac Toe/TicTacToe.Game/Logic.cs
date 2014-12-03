@@ -29,7 +29,7 @@ namespace TicTacToe.Game
             turn.Advance();
         }
 
-        public SymbolTypes GetCurrentTurn()
+        public SymbolType GetCurrentTurn()
         {
             return turn.GetCurrent();
         }
@@ -72,7 +72,7 @@ namespace TicTacToe.Game
 
         private static bool MarkedCellsMatch(Cell cell1, Cell cell2, Cell cell3)
         {
-            if (cell1.GetSymbolType() == SymbolTypes.Uninitialized)
+            if (cell1.GetSymbolType() == SymbolType.Uninitialized)
             {
                 return false;
             }

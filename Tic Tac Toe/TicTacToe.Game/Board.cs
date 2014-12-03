@@ -39,7 +39,7 @@ namespace TicTacToe.Game
             return cells;
         }
 
-        public SymbolTypes GetCurrentTurn()
+        public SymbolType GetCurrentTurn()
         {
             return logic.GetCurrentTurn();
         }
@@ -59,7 +59,7 @@ namespace TicTacToe.Game
             return logic.IsWin();
         }
 
-        public SymbolTypes GetWinner()
+        public SymbolType GetWinner()
         {
             return logic.GetCurrentTurn();
         }

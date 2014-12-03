@@ -5,19 +5,19 @@ namespace TicTacToe.Game
 {
     public class SymbolTypeConverter
     {
-        private readonly Dictionary<SymbolTypes, string> stringSymbols;
+        private readonly Dictionary<SymbolType, string> stringSymbols;
 
         public SymbolTypeConverter()
         {
-            stringSymbols = new Dictionary<SymbolTypes, string>
+            stringSymbols = new Dictionary<SymbolType, string>
                                 {
-                                    {SymbolTypes.Cross, ConfigurationManager.AppSettings["NoughtSymbol"]},
-                                    {SymbolTypes.Nought, ConfigurationManager.AppSettings["CrossSymbol"]},
-                                    {SymbolTypes.Uninitialized, string.Empty}
+                                    {SymbolType.Cross, ConfigurationManager.AppSettings["CrossSymbol"]},
+                                    {SymbolType.Nought, ConfigurationManager.AppSettings["NoughtSymbol"]},                                    
+                                    {SymbolType.Uninitialized, string.Empty}
                                 };
         }
 
-        public string GetString(SymbolTypes symbol)
+        public string GetString(SymbolType symbol)
         {
             return stringSymbols[symbol];
         }

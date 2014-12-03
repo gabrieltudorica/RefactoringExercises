@@ -2,27 +2,27 @@
 {
     public class Turn
     {        
-        private SymbolTypes current;
+        private SymbolType current;
 
         public Turn()
         {
-            current = SymbolTypes.Cross;
+            current = SymbolType.Cross;
         }
         
-        public SymbolTypes GetCurrent()
+        public SymbolType GetCurrent()
         {
             return current;
         }     
 
         public void Advance()
         {
-            if (current == SymbolTypes.Cross)
+            if (current == SymbolType.Cross)
             {
-                current = SymbolTypes.Nought;
+                current = SymbolType.Nought;
                 return;
             }
 
-            current = SymbolTypes.Cross;
+            current = SymbolType.Cross;
         }
     }    
 }

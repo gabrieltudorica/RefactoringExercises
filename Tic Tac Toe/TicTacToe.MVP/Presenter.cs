@@ -5,16 +5,18 @@ namespace TicTacToe.MVP
     public class Presenter
     {
         private readonly IView view;
+
         private readonly Board board;
-        private ViewModel viewModel;
         private readonly Statistics statistics;
+        private ViewModel viewModel;
 
         public Presenter(IView view)
         {
             this.view = view;
-            board = new Board();
-            viewModel = new ViewModel();
+
+            board = new Board();            
             statistics = new Statistics();
+            viewModel = new ViewModel();
         }
 
         public void Initialize()
@@ -32,8 +34,8 @@ namespace TicTacToe.MVP
         public void MarkMove(int cellIndex)
         {
             board.MarkMove(cellIndex);
-            board.AdvanceTurn();
             UpdateView();
+            board.AdvanceTurn();            
         }
 
         private void UpdateView()

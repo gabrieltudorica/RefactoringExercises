@@ -5,11 +5,11 @@ namespace TicTacToe.Game
     public class Cell
     {
         private bool isUsed;
-        private SymbolTypes type;
+        private SymbolType type;
 
         public Cell()
         {
-            type = SymbolTypes.Uninitialized;
+            type = SymbolType.Uninitialized;
         }
 
         public bool IsUsed()
@@ -17,12 +17,12 @@ namespace TicTacToe.Game
             return isUsed;
         }
 
-        public SymbolTypes GetSymbolType()
+        public SymbolType GetSymbolType()
         {
             return type;
         }
 
-        public void SetSymbolType(SymbolTypes type)
+        public void SetSymbolType(SymbolType type)
         {
             Trace.Assert(isUsed == false, "SetSymbolType should be set one time only");
 
