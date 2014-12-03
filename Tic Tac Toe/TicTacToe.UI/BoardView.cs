@@ -17,8 +17,8 @@ namespace TicTacToe.UI
             CreateButtons();
             stringSymbols = new Dictionary<SymbolTypes, string>
                                 {
-                                    {SymbolTypes.Cross, "X"},
-                                    {SymbolTypes.Nought, "O"}
+                                    {SymbolTypes.Cross, ConfigurationManager.AppSettings["NoughtSymbol"]},
+                                    {SymbolTypes.Nought, ConfigurationManager.AppSettings["CrossSymbol"]}
                                 };
 
             presenter = new Presenter(this);
