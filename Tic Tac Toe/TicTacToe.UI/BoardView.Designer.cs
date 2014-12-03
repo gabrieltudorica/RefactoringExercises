@@ -53,6 +53,7 @@
             this.board.Name = "board";
             this.board.Size = new System.Drawing.Size(375, 325);
             this.board.TabIndex = 0;
+            this.board.Width = 300;
             // 
             // label1
             // 
