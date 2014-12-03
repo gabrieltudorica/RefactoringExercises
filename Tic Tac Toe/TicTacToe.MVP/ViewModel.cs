@@ -6,8 +6,14 @@ namespace TicTacToe.MVP
     {
         public Cell[] Cells { get; set; }        
         public Statistics Statistics { get; set; }
+        public SymbolTypes Winner { get; set; }
+
         public bool IsDraw { get; set; }
         public bool IsWin { get; set; }
-        public SymbolTypes Winner { get; set; }
+
+        public bool IsGameOver()
+        {
+            return IsDraw || IsWin;
+        }        
     }
 }

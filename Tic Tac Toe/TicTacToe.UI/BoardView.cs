@@ -11,16 +11,18 @@ namespace TicTacToe.UI
     {
         private readonly Presenter presenter;
         private readonly Dictionary<SymbolTypes, string> stringSymbols;
+
         public BoardView()
         {
             InitializeComponent();
             CreateButtons();
+
             stringSymbols = new Dictionary<SymbolTypes, string>
                                 {
                                     {SymbolTypes.Cross, ConfigurationManager.AppSettings["NoughtSymbol"]},
                                     {SymbolTypes.Nought, ConfigurationManager.AppSettings["CrossSymbol"]}
                                 };
-
+            
             presenter = new Presenter(this);
             presenter.Initialize();                       
         }
@@ -49,31 +51,28 @@ namespace TicTacToe.UI
 
         public void Update(ViewModel viewModel)
         {
-            for (int i = 0; i < viewModel.Cells.Length; i++)
+            UpdateButtons(viewModel.Cells);
+            UpdateStatistics(viewModel.Statistics);
+
+            if (!viewModel.IsGameOver())
             {
-                UpdateButton(i, viewModel.Cells[i]);
+                return;
             }
 
-            if(viewModel.IsDraw)
-            {
-                MessageBox.Show("Match ended in draw");
-                NewGame();
-            }
-
-            if(viewModel.IsWin)
-            {
-                MessageBox.Show(stringSymbols[viewModel.Winner] + " wins!");
-                NewGame();
-            }
-
-            //statistics
-            xWinsCount.Text = "z";
-            yWinsCount.Text = "z";
-            drawsCount.Text = "Z";
+            MessageBox.Show(GetGameOverMessage(viewModel.IsWin, viewModel.Winner));
+            NewGame();
         }
 
+        private void UpdateButtons(Cell[] cells)
+        {
+            for (int i = 0; i < cells.Length; i++)
+            {
+                UpdateButton(i, cells[i]);
+            }
+        }        
+
         private void UpdateButton(int index, Cell cell)
-        {               
+        {
             if (!cell.IsUsed())
             {
                 return;
@@ -81,19 +80,36 @@ namespace TicTacToe.UI
 
             var button = (Button)board.Controls.Find(index.ToString(), false)[0];
             button.Text = stringSymbols[cell.GetSymbolType()];
-        }        
+            button.Enabled = false;
+        }
+
+        private void UpdateStatistics(Statistics stats)
+        {
+            xWinsCount.Text = "z";
+            yWinsCount.Text = "z";
+            drawsCount.Text = "Z";
+        }
+
+        private string GetGameOverMessage(bool isWin, SymbolTypes winner)
+        {
+            if (isWin)
+            {
+                return stringSymbols[winner] + " wins!";
+            }
+
+            return "Match ended in draw";
+        }
 
         private void OnButton_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
             presenter.MarkMove(int.Parse(button.Name));
-            button.Enabled = false;
         }
 
         private void NewGame()
         {
-            presenter.NewGame();
             ClearBoard();
+            presenter.NewGame();            
         }
 
         private void ClearBoard()
@@ -104,7 +120,7 @@ namespace TicTacToe.UI
             }                
         }
 
-        private void ClearCell(Button button)
+        private static void ClearCell(Button button)
         {
             button.Enabled = true;
             button.Text = "";
