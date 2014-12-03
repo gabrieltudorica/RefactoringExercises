@@ -44,25 +44,28 @@ namespace TicTacToe.MVP
 
         private ViewModel GetViewModel()
         {
-            if (board.IsDraw())
-            {
-                viewModel.IsDraw = true;
-                viewModel.IsWin = false;
-            }
-
-            if (board.IsWin())
-            {
-                viewModel.IsDraw = false;
-                viewModel.IsWin = true;
-                viewModel.Winner = board.GetCurrentTurn();
-            }
-
+            bool isGameOver = board.IsDraw() || board.IsWin();
+            
             viewModel.Cells = board.GetCells();
             viewModel.Statistics = statistics;
+            viewModel.IsGameOver = isGameOver;
+            
+            if (isGameOver)
+            {
+                viewModel.EndGameMessage = GetEndMessage();
+            }
 
             return viewModel;
         }
 
-        
+        private string GetEndMessage()
+        {
+            if (board.IsDraw())
+            {
+                return "Match ended in draw!";
+            }
+
+            return new SymbolTypeConverter().GetString(board.GetCurrentTurn()) + " wins!";
+        }
     }
 }

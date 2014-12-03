@@ -10,18 +10,11 @@ namespace TicTacToe.UI
     public partial class BoardView : Form, IView
     {
         private readonly Presenter presenter;
-        private readonly Dictionary<SymbolTypes, string> stringSymbols;
 
         public BoardView()
         {
             InitializeComponent();
             CreateButtons();
-
-            stringSymbols = new Dictionary<SymbolTypes, string>
-                                {
-                                    {SymbolTypes.Cross, ConfigurationManager.AppSettings["NoughtSymbol"]},
-                                    {SymbolTypes.Nought, ConfigurationManager.AppSettings["CrossSymbol"]}
-                                };
             
             presenter = new Presenter(this);
             presenter.Initialize();                       
@@ -37,11 +30,22 @@ namespace TicTacToe.UI
 
         private Button CreateButton(int buttonIndex)
         {
-            var button = new Button { Width = 100, Height = 100 };
-            button.Name = buttonIndex.ToString();
+            var button = new Button
+            {
+                Width = 100, 
+                Height = 100, 
+                Name = buttonIndex.ToString()
+            };
+
             button.Click += OnButton_Click;
 
             return button;
+        }
+
+        private void OnButton_Click(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            presenter.MarkMove(int.Parse(button.Name));
         }
 
         private void AddButtonToBoard(Button button)
@@ -54,12 +58,12 @@ namespace TicTacToe.UI
             UpdateButtons(viewModel.Cells);
             UpdateStatistics(viewModel.Statistics);
 
-            if (!viewModel.IsGameOver())
+            if (!viewModel.IsGameOver)
             {
                 return;
             }
 
-            MessageBox.Show(GetGameOverMessage(viewModel.IsWin, viewModel.Winner));
+            MessageBox.Show(viewModel.EndGameMessage);
             NewGame();
         }
 
@@ -79,7 +83,7 @@ namespace TicTacToe.UI
             }            
 
             var button = (Button)board.Controls.Find(index.ToString(), false)[0];
-            button.Text = stringSymbols[cell.GetSymbolType()];
+            button.Text = new SymbolTypeConverter().GetString(cell.GetSymbolType());
             button.Enabled = false;
         }
 
@@ -88,23 +92,7 @@ namespace TicTacToe.UI
             xWinsCount.Text = "z";
             yWinsCount.Text = "z";
             drawsCount.Text = "Z";
-        }
-
-        private string GetGameOverMessage(bool isWin, SymbolTypes winner)
-        {
-            if (isWin)
-            {
-                return stringSymbols[winner] + " wins!";
-            }
-
-            return "Match ended in draw";
-        }
-
-        private void OnButton_Click(object sender, EventArgs e)
-        {
-            Button button = (Button)sender;
-            presenter.MarkMove(int.Parse(button.Name));
-        }
+        }       
 
         private void NewGame()
         {
