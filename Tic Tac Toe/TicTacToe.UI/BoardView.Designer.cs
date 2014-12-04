@@ -127,7 +127,7 @@
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Gray;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(258, 45);
+            this.label9.Location = new System.Drawing.Point(246, 11);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(64, 25);
@@ -139,7 +139,7 @@
             this.nextTurn.AutoSize = true;
             this.nextTurn.BackColor = System.Drawing.Color.Gray;
             this.nextTurn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nextTurn.Location = new System.Drawing.Point(346, 45);
+            this.nextTurn.Location = new System.Drawing.Point(334, 11);
             this.nextTurn.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.nextTurn.Name = "nextTurn";
             this.nextTurn.Size = new System.Drawing.Size(0, 25);

@@ -49,6 +49,11 @@ namespace TicTacToe.Game
             return logic.GetNextTurn();
         }
 
+        public SymbolType GetWinner()
+        {
+            return logic.GetCurrentTurn();
+        }
+
         public void MarkMove(int cellIndex)
         {
             cells[cellIndex].SetSymbolType(GetCurrentTurn());
@@ -62,12 +67,7 @@ namespace TicTacToe.Game
         public bool IsWin()
         {
             return logic.IsWin();
-        }
-
-        public SymbolType GetWinner()
-        {
-            return logic.GetCurrentTurn();
-        }
+        }      
 
         public bool IsDraw()
         {

@@ -14,6 +14,16 @@
             return current;
         }     
 
+        public SymbolType GetNext()
+        {
+            if (current == SymbolType.Cross)
+            {
+                return SymbolType.Nought;
+            }
+
+            return SymbolType.Cross;
+        }
+
         public void Advance()
         {
             if (current == SymbolType.Cross)
@@ -23,16 +33,6 @@
             }
 
             current = SymbolType.Cross;
-        }
-
-        public SymbolType GetNext()
-        {
-            if (current == SymbolType.Cross)
-            {
-                return SymbolType.Nought;
-            }
-
-            return SymbolType.Cross;
         }
     }    
 }
