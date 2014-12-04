@@ -44,6 +44,11 @@ namespace TicTacToe.Game
             return logic.GetCurrentTurn();
         }
 
+        public SymbolType GetNextTurn()
+        {
+            return logic.GetNextTurn();
+        }
+
         public void MarkMove(int cellIndex)
         {
             cells[cellIndex].SetSymbolType(GetCurrentTurn());

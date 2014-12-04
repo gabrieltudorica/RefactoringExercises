@@ -24,5 +24,15 @@
 
             current = SymbolType.Cross;
         }
+
+        public SymbolType GetNext()
+        {
+            if (current == SymbolType.Cross)
+            {
+                return SymbolType.Nought;
+            }
+
+            return SymbolType.Cross;
+        }
     }    
 }

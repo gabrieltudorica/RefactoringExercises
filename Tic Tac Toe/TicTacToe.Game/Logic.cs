@@ -34,6 +34,11 @@ namespace TicTacToe.Game
             return turn.GetCurrent();
         }
 
+        public SymbolType GetNextTurn()
+        {
+            return turn.GetNext();
+        }
+
         public bool IsDraw()
         {
             return movesLeft == 0;

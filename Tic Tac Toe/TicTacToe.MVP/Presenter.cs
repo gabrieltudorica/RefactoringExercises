@@ -57,6 +57,7 @@ namespace TicTacToe.MVP
             viewModel.IsGameOver = isGameOver;
             viewModel.Cells = board.GetCells();
             viewModel.Statistics = statistics;
+            viewModel.NextTurn = board.GetNextTurn();
 
             return viewModel;
         }
