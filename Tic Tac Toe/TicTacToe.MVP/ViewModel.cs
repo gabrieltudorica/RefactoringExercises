@@ -8,5 +8,6 @@ namespace TicTacToe.MVP
         public Statistics Statistics { get; set; }
         public bool IsGameOver { get; set; }
         public string EndGameMessage { get; set; }
+        public SymbolType NextTurn { get; set; }
     }
 }
