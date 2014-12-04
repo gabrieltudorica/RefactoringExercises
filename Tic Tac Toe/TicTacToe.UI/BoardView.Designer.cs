@@ -32,8 +32,8 @@
             this.board = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.xWinsCount = new System.Windows.Forms.Label();
-            this.yWinsCount = new System.Windows.Forms.Label();
+            this.crossesWinsCount = new System.Windows.Forms.Label();
+            this.noughtsWinsCount = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.drawsCount = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -79,27 +79,27 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "\'O\' Wins:";
             // 
-            // xWinsCount
+            // crossesWinsCount
             // 
-            this.xWinsCount.AutoSize = true;
-            this.xWinsCount.BackColor = System.Drawing.Color.Gray;
-            this.xWinsCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xWinsCount.ForeColor = System.Drawing.Color.White;
-            this.xWinsCount.Location = new System.Drawing.Point(141, 9);
-            this.xWinsCount.Name = "xWinsCount";
-            this.xWinsCount.Size = new System.Drawing.Size(0, 20);
-            this.xWinsCount.TabIndex = 3;
+            this.crossesWinsCount.AutoSize = true;
+            this.crossesWinsCount.BackColor = System.Drawing.Color.Gray;
+            this.crossesWinsCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.crossesWinsCount.ForeColor = System.Drawing.Color.White;
+            this.crossesWinsCount.Location = new System.Drawing.Point(141, 9);
+            this.crossesWinsCount.Name = "crossesWinsCount";
+            this.crossesWinsCount.Size = new System.Drawing.Size(0, 20);
+            this.crossesWinsCount.TabIndex = 3;
             // 
-            // yWinsCount
+            // noughtsWinsCount
             // 
-            this.yWinsCount.AutoSize = true;
-            this.yWinsCount.BackColor = System.Drawing.Color.Gray;
-            this.yWinsCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.yWinsCount.ForeColor = System.Drawing.Color.White;
-            this.yWinsCount.Location = new System.Drawing.Point(141, 51);
-            this.yWinsCount.Name = "yWinsCount";
-            this.yWinsCount.Size = new System.Drawing.Size(0, 20);
-            this.yWinsCount.TabIndex = 4;
+            this.noughtsWinsCount.AutoSize = true;
+            this.noughtsWinsCount.BackColor = System.Drawing.Color.Gray;
+            this.noughtsWinsCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.noughtsWinsCount.ForeColor = System.Drawing.Color.White;
+            this.noughtsWinsCount.Location = new System.Drawing.Point(141, 51);
+            this.noughtsWinsCount.Name = "noughtsWinsCount";
+            this.noughtsWinsCount.Size = new System.Drawing.Size(0, 20);
+            this.noughtsWinsCount.TabIndex = 4;
             // 
             // label5
             // 
@@ -184,8 +184,8 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.drawsCount);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.yWinsCount);
-            this.Controls.Add(this.xWinsCount);
+            this.Controls.Add(this.noughtsWinsCount);
+            this.Controls.Add(this.crossesWinsCount);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.board);
@@ -206,8 +206,8 @@
         private System.Windows.Forms.FlowLayoutPanel board;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label xWinsCount;
-        private System.Windows.Forms.Label yWinsCount;
+        private System.Windows.Forms.Label crossesWinsCount;
+        private System.Windows.Forms.Label noughtsWinsCount;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label drawsCount;
         private System.Windows.Forms.Label label7;
