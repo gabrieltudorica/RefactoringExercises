@@ -29,10 +29,12 @@ namespace TicTacToe.UI
 
         private Button CreateButton(int buttonIndex)
         {
+            int buttonSize = int.Parse(ConfigurationManager.AppSettings["ButtonSizeInPixels"]);
+
             var button = new Button
             {
-                Width = int.Parse(ConfigurationManager.AppSettings["ButtonSizeInPixels"]),
-                Height = int.Parse(ConfigurationManager.AppSettings["ButtonSizeInPixels"]), 
+                Width = buttonSize,
+                Height = buttonSize, 
                 Name = buttonIndex.ToString()
             };
 
