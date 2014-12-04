@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+using System.Globalization;
 using System.Windows.Forms;
 using TicTacToe.Game;
 using TicTacToe.MVP;
@@ -34,8 +35,8 @@ namespace TicTacToe.UI
             var button = new Button
             {
                 Width = buttonSize,
-                Height = buttonSize, 
-                Name = buttonIndex.ToString()
+                Height = buttonSize,
+                Name = buttonIndex.ToString(CultureInfo.InvariantCulture)
             };
 
             button.Click += OnButton_Click;
@@ -45,7 +46,7 @@ namespace TicTacToe.UI
 
         private void OnButton_Click(object sender, EventArgs e)
         {
-            Button button = (Button)sender;
+            var button = (Button)sender;
             presenter.MarkMove(int.Parse(button.Name));
         }
 
@@ -81,18 +82,18 @@ namespace TicTacToe.UI
             if (!cell.IsUsed())
             {
                 return;
-            }            
+            }
 
-            var button = (Button)board.Controls.Find(index.ToString(), false)[0];
+            var button = (Button)board.Controls.Find(index.ToString(CultureInfo.InvariantCulture), false)[0];
             button.Text = new SymbolTypeConverter().GetString(cell.GetSymbolType());
             button.Enabled = false;
         }
 
         private void UpdateStatistics(Statistics stats)
         {
-            xWinsCount.Text = "z";
-            yWinsCount.Text = "z";
-            drawsCount.Text = "Z";
+            crossesWinsCount.Text = stats.GetCrossesWinsCount().ToString(CultureInfo.InvariantCulture);
+            noughtsWinsCount.Text = stats.GetNoughtsWinsCount().ToString(CultureInfo.InvariantCulture);
+            drawsCount.Text = stats.GetDrawsCount().ToString(CultureInfo.InvariantCulture);
         }       
 
         private void NewGame()

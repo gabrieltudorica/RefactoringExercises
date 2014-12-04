@@ -47,17 +47,35 @@ namespace TicTacToe.MVP
         private ViewModel GetViewModel()
         {
             bool isGameOver = board.IsDraw() || board.IsWin();
-            
-            viewModel.Cells = board.GetCells();
-            viewModel.Statistics = statistics;
-            viewModel.IsGameOver = isGameOver;
-            
+
             if (isGameOver)
             {
+                UpdateStatistics();
                 viewModel.EndGameMessage = GetEndMessage();
             }
+            
+            viewModel.IsGameOver = isGameOver;
+            viewModel.Cells = board.GetCells();
+            viewModel.Statistics = statistics;
 
             return viewModel;
+        }
+
+        private void UpdateStatistics()
+        {
+            if (board.IsDraw())
+            {
+                statistics.IncrementDrawsCount();
+                return;
+            }
+
+            if (board.GetWinner() == SymbolType.Cross)
+            {
+                statistics.IncrementCrossesWins();
+                return;
+            }
+
+            statistics.IncrementNoughtsWins();
         }
 
         private string GetEndMessage()
