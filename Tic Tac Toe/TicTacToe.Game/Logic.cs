@@ -29,12 +29,12 @@ namespace TicTacToe.Game
             turn.Advance();
         }
 
-        public SymbolType GetCurrentTurn()
+        public string GetCurrentTurn()
         {
             return turn.GetCurrent();
         }
 
-        public SymbolType GetNextTurn()
+        public string GetNextTurn()
         {
             return turn.GetNext();
         }

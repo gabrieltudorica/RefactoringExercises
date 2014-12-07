@@ -60,7 +60,7 @@ namespace TicTacToe.UI
         {
             UpdateButtons(viewModel.Cells);            
             UpdateStatistics(viewModel.Statistics);
-            nextTurn.Text = new SymbolTypeConverter().GetString(viewModel.NextTurn);
+            nextTurn.Text = viewModel.NextTurn;
 
             if (!viewModel.IsGameOver)
             {

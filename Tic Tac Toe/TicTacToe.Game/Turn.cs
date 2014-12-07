@@ -2,37 +2,32 @@
 {
     public class Turn
     {        
-        private SymbolType current;
+        private string current;
 
         public Turn()
         {
-            current = SymbolType.Cross;
+            current = Configuration.CrossSymbol;
         }
         
-        public SymbolType GetCurrent()
+        public string GetCurrent()
         {
             return current;
         }     
 
-        public SymbolType GetNext()
+        public string GetNext()
         {
-            if (current == SymbolType.Cross)
-            {
-                return SymbolType.Nought;
-            }
-
-            return SymbolType.Cross;
+            return current == Configuration.CrossSymbol ? Configuration.NoughtSymbol : Configuration.CrossSymbol;
         }
 
         public void Advance()
         {
-            if (current == SymbolType.Cross)
+            if (current == Configuration.CrossSymbol)
             {
-                current = SymbolType.Nought;
+                current = Configuration.NoughtSymbol;
                 return;
             }
 
-            current = SymbolType.Cross;
+            current = Configuration.CrossSymbol;
         }
     }    
 }
