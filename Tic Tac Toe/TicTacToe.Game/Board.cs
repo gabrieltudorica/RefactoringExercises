@@ -34,7 +34,7 @@ namespace TicTacToe.Game
             return cells.ToArray();
         }              
 
-        public Cell[] GetCells()
+        public IEnumerable<Cell> GetCells()
         {
             return cells;
         }

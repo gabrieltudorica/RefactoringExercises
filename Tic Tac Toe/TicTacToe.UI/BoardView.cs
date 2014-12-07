@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Globalization;
 using System.Windows.Forms;
@@ -70,11 +71,13 @@ namespace TicTacToe.UI
             NewGame();
         }
 
-        private void UpdateButtons(Cell[] cells)
+        private void UpdateButtons(IEnumerable<Cell> cells)
         {
-            for (int i = 0; i < cells.Length; i++)
+            int index = 0;
+            foreach (Cell cell in cells)
             {
-                UpdateButton(i, cells[i]);
+                UpdateButton(index, cell);
+                index++;
             }
         }        
 
