@@ -7,71 +7,59 @@ namespace TicTacToe.Game
     {
         private readonly int cellCount = int.Parse(ConfigurationManager.AppSettings["CellCount"]);
         
-        private Cell[] cells;
-        private Logic logic;        
+        private readonly string[] cells;
 
         public Board()
         {
-            NewGame();
-        }
-
-        public void NewGame()
-        {
             cells = CreateCells();
-            logic = new Logic(cells);
         }
 
-        private Cell[] CreateCells()
+        private string[] CreateCells()
         {
-            var cells = new List<Cell>();
+            var cells = new List<string>();
 
             for (int i = 0; i < cellCount; i++)
             {
-                var cell = new Cell();
-                cells.Add(cell);
+                cells.Add(string.Empty);
             }
 
             return cells.ToArray();
         }              
 
-        public IEnumerable<Cell> GetCells()
+        public IEnumerable<string> GetCells()
         {
             return cells;
         }
 
-        public SymbolType GetCurrentTurn()
+        public IEnumerable<string[]> GetRows()
         {
-            return logic.GetCurrentTurn();
+            var rowOne = new[] { cells[0], cells[1], cells[2]};
+            var rowTwo = new[] { cells[3], cells[4], cells[5] };
+            var rowThree = new[] { cells[6], cells[7], cells[8] };
+
+            return new List<string[]> {rowOne, rowTwo, rowThree};
         }
 
-        public SymbolType GetNextTurn()
+        public IEnumerable<string[]> GetColumns()
         {
-            return logic.GetNextTurn();
+            var columnOne = new[] { cells[0], cells[3], cells[6] };
+            var columnTwo = new[] { cells[1], cells[4], cells[7] };
+            var columnThree = new[] { cells[2], cells[5], cells[8] };
+
+            return new List<string[]> { columnOne, columnTwo, columnThree };
         }
 
-        public SymbolType GetWinner()
+        public IEnumerable<string[]> GetDiagonals()
         {
-            return logic.GetCurrentTurn();
+            var diagonalOne = new[] { cells[0], cells[4], cells[8] };
+            var diagonalTwo = new[] { cells[2], cells[4], cells[6] };
+
+            return new List<string[]> { diagonalOne, diagonalTwo };
         }
 
-        public void MarkMove(int cellIndex)
+        public void MarkMove(int cellIndex, string symbol)
         {
-            cells[cellIndex].SetSymbolType(GetCurrentTurn());
+            cells[cellIndex] = symbol;
         }
-
-        public void AdvanceTurn()
-        {
-            logic.AdvanceTurn();
-        }
-
-        public bool IsWin()
-        {
-            return logic.IsWin();
-        }      
-
-        public bool IsDraw()
-        {
-            return logic.IsDraw();
-        }        
     }   
 }

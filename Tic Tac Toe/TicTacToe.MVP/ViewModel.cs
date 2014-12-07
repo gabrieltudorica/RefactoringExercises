@@ -5,7 +5,7 @@ namespace TicTacToe.MVP
 {
     public class ViewModel
     {
-        public IEnumerable<Cell> Cells { get; set; }        
+        public IEnumerable<string> Cells { get; set; }        
         public Statistics Statistics { get; set; }
         public bool IsGameOver { get; set; }
         public string EndGameMessage { get; set; }

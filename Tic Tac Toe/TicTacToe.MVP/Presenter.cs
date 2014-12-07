@@ -6,7 +6,8 @@ namespace TicTacToe.MVP
     {
         private readonly IView view;
 
-        private readonly Board board;
+        private Board board;
+        private Logic logic;
         private readonly Statistics statistics;
         private ViewModel viewModel;
 
@@ -14,7 +15,8 @@ namespace TicTacToe.MVP
         {
             this.view = view;
 
-            board = new Board();            
+            board = new Board();    
+            logic = new Logic(board);
             statistics = new Statistics();
             viewModel = new ViewModel();
         }
@@ -26,16 +28,17 @@ namespace TicTacToe.MVP
 
         public void NewGame()
         {
-            board.NewGame();
+            board = new Board();
+            logic = new Logic(board);
             viewModel = new ViewModel();
             UpdateView();
         }
 
         public void MarkMove(int cellIndex)
         {
-            board.MarkMove(cellIndex);
+            board.MarkMove(cellIndex, new SymbolTypeConverter().GetString(logic.GetCurrentTurn()));
             UpdateView();
-            board.AdvanceTurn();            
+            logic.AdvanceTurn();            
         }
 
         private void UpdateView()
@@ -46,7 +49,7 @@ namespace TicTacToe.MVP
 
         private ViewModel GetViewModel()
         {
-            bool isGameOver = board.IsDraw() || board.IsWin();
+            bool isGameOver = logic.IsDraw() || logic.IsWin();
 
             if (isGameOver)
             {
@@ -57,20 +60,21 @@ namespace TicTacToe.MVP
             viewModel.IsGameOver = isGameOver;
             viewModel.Cells = board.GetCells();
             viewModel.Statistics = statistics;
-            viewModel.NextTurn = board.GetNextTurn();
+            viewModel.NextTurn = logic.GetNextTurn();
 
             return viewModel;
         }
 
         private void UpdateStatistics()
         {
-            if (board.IsDraw())
+            if (logic.IsDraw())
             {
                 statistics.IncrementDrawsCount();
                 return;
             }
 
-            if (board.GetWinner() == SymbolType.Cross)
+            SymbolType winner = logic.GetCurrentTurn();
+            if (winner == SymbolType.Cross)
             {
                 statistics.IncrementCrossesWins();
                 return;
@@ -81,12 +85,12 @@ namespace TicTacToe.MVP
 
         private string GetEndMessage()
         {
-            if (board.IsDraw())
+            if (logic.IsDraw())
             {
                 return "Match ended in draw!";
             }
 
-            return new SymbolTypeConverter().GetString(board.GetCurrentTurn()) + " wins!";
+            return new SymbolTypeConverter().GetString(logic.GetCurrentTurn()) + " wins!";
         }
     }
 }

@@ -71,25 +71,25 @@ namespace TicTacToe.UI
             NewGame();
         }
 
-        private void UpdateButtons(IEnumerable<Cell> cells)
+        private void UpdateButtons(IEnumerable<string> cells)
         {
             int index = 0;
-            foreach (Cell cell in cells)
+            foreach (string cell in cells)
             {
                 UpdateButton(index, cell);
                 index++;
             }
         }        
 
-        private void UpdateButton(int index, Cell cell)
+        private void UpdateButton(int index, string cell)
         {
-            if (!cell.IsUsed())
+            if (cell == string.Empty)
             {
                 return;
             }
 
             var button = (Button)board.Controls.Find(index.ToString(CultureInfo.InvariantCulture), false)[0];
-            button.Text = new SymbolTypeConverter().GetString(cell.GetSymbolType());
+            button.Text = cell;
             button.Enabled = false;
         }
 

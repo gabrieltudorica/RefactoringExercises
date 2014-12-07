@@ -42,7 +42,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Board.cs" />
-    <Compile Include="Cell.cs" />
     <Compile Include="SymbolTypeConverter.cs" />
     <Compile Include="SymbolType.cs" />
     <Compile Include="Logic.cs" />

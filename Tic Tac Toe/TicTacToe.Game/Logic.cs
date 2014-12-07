@@ -6,13 +6,13 @@ namespace TicTacToe.Game
     public class Logic
     {
         private int movesLeft;
-        private readonly Cell[] cells;
+        private readonly Board board;
         private readonly Turn turn;
 
-        public Logic(Cell[] cells)
+        public Logic(Board board)
         {
             movesLeft = int.Parse(ConfigurationManager.AppSettings["MaxMoves"]);
-            this.cells = cells;
+            this.board = board;
             turn = new Turn();
         }
 
@@ -51,38 +51,48 @@ namespace TicTacToe.Game
 
         private bool IsHorizontalWin()
         {
-            bool win = MarkedCellsMatch(cells[0], cells[1], cells[2]);
-            win |= MarkedCellsMatch(cells[3], cells[4], cells[5]);
-            win |= MarkedCellsMatch(cells[6], cells[7], cells[8]);
+            bool isWin = false;
 
-            return win;
+            foreach (string[] cells in board.GetRows())
+            {
+                isWin |= CellsMatch(cells);
+            }          
+
+            return isWin;
         }
 
         private bool IsVerticalWin()
         {
-            bool win = MarkedCellsMatch(cells[0], cells[3], cells[6]);
-            win |= MarkedCellsMatch(cells[1], cells[4], cells[7]);
-            win |= MarkedCellsMatch(cells[2], cells[5], cells[8]);
+            bool isWin = false;
+            
+            foreach (string[] cells in board.GetColumns())
+            {
+                isWin |= CellsMatch(cells);
+            }
 
-            return win;
+            return isWin;
         }
 
         private bool IsDiagonalWin()
         {
-            bool win = MarkedCellsMatch(cells[0], cells[4], cells[8]);
-            win |= MarkedCellsMatch(cells[2], cells[4], cells[6]);
+            bool isWin = false;
 
-            return win;
+            foreach (string[] cells in board.GetDiagonals())
+            {
+                isWin |= CellsMatch(cells);
+            }
+
+            return isWin;
         }
 
-        private static bool MarkedCellsMatch(Cell cell1, Cell cell2, Cell cell3)
+        private static bool CellsMatch(string[] cells)
         {
-            if (cell1.GetSymbolType() == SymbolType.Uninitialized)
+            if (cells[0] == string.Empty)
             {
                 return false;
             }
 
-            return cell1.GetSymbolType() == cell2.GetSymbolType() && cell2.GetSymbolType() == cell3.GetSymbolType();
+            return cells[0] == cells[1] && cells[1] == cells[2];
         }
     }
 }
