@@ -1,4 +1,5 @@
-﻿using TicTacToe.Game;
+﻿using System.Diagnostics;
+using TicTacToe.Game;
 
 namespace TicTacToe.MVP
 {
@@ -36,15 +37,17 @@ namespace TicTacToe.MVP
 
         public void MarkMove(int cellIndex)
         {
+            Trace.Assert(logic.IsMoveLegal(cellIndex), "Illegal move: cell should be set only once");
+
             board.MarkMove(cellIndex, logic.GetCurrentTurn());
             UpdateView();
-            logic.AdvanceTurn();            
+            logic.AdvanceTurn();
         }
 
         private void UpdateView()
         {
-            ViewModel viewModel = GetViewModel();
-            view.Update(viewModel);
+            ViewModel vm = GetViewModel();
+            view.Update(vm);
         }
 
         private ViewModel GetViewModel()

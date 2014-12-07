@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Linq;
 
 namespace TicTacToe.Game
 {
@@ -13,20 +14,7 @@ namespace TicTacToe.Game
             movesLeft = Config.CellCount;
             this.board = board;
             turn = new Turn();
-        }
-
-        public void AdvanceTurn()
-        {
-            if(IsWin() || IsDraw())
-            {
-                return;
-            }
-
-            movesLeft--;
-            Trace.Assert(movesLeft >= 0, "Number of moves left should not drop below zero.");
-            
-            turn.Advance();
-        }
+        }        
 
         public string GetCurrentTurn()
         {
@@ -41,6 +29,26 @@ namespace TicTacToe.Game
         public bool IsDraw()
         {
             return movesLeft == 0;
+        }
+
+        public bool IsMoveLegal(int cellIndex)
+        {
+            string[] cells = board.GetCells().ToArray();
+
+            return cells[cellIndex] == string.Empty;
+        }
+
+        public void AdvanceTurn()
+        {
+            if (IsWin() || IsDraw())
+            {
+                return;
+            }
+
+            movesLeft--;
+            Trace.Assert(movesLeft >= 0, "Number of moves left should not drop below zero.");
+
+            turn.Advance();
         }
 
         public bool IsWin()

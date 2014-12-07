@@ -11,7 +11,7 @@ namespace TicTacToe.Game
             cells = CreateCells();
         }
 
-        private string[] CreateCells()
+        private static string[] CreateCells()
         {
             var cells = new List<string>();
 
