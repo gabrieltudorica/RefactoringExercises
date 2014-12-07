@@ -74,7 +74,7 @@ namespace TicTacToe.MVP
             }
 
             string winner = logic.GetCurrentTurn();
-            if (winner == Configuration.CrossSymbol)
+            if (winner == Config.CrossSymbol)
             {
                 statistics.IncrementCrossesWins();
                 return;

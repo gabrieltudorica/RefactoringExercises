@@ -1,5 +1,4 @@
-﻿using System.Configuration;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
 namespace TicTacToe.Game
 {
@@ -11,7 +10,7 @@ namespace TicTacToe.Game
 
         public Logic(Board board)
         {
-            movesLeft = int.Parse(ConfigurationManager.AppSettings["MaxMoves"]);
+            movesLeft = Config.CellCount;
             this.board = board;
             turn = new Turn();
         }

@@ -6,7 +6,7 @@
 
         public Turn()
         {
-            current = Configuration.CrossSymbol;
+            current = Config.CrossSymbol;
         }
         
         public string GetCurrent()
@@ -16,18 +16,18 @@
 
         public string GetNext()
         {
-            return current == Configuration.CrossSymbol ? Configuration.NoughtSymbol : Configuration.CrossSymbol;
+            return current == Config.CrossSymbol ? Config.NoughtSymbol : Config.CrossSymbol;
         }
 
         public void Advance()
         {
-            if (current == Configuration.CrossSymbol)
+            if (current == Config.CrossSymbol)
             {
-                current = Configuration.NoughtSymbol;
+                current = Config.NoughtSymbol;
                 return;
             }
 
-            current = Configuration.CrossSymbol;
+            current = Config.CrossSymbol;
         }
     }    
 }

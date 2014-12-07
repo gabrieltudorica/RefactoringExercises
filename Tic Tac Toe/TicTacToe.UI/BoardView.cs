@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Globalization;
 using System.Windows.Forms;
 using TicTacToe.Game;
@@ -23,7 +22,7 @@ namespace TicTacToe.UI
 
         private void CreateButtons()
         {
-            for (int i = 0; i < int.Parse(ConfigurationManager.AppSettings["CellCount"]); i++)
+            for (int i = 0; i < Config.CellCount; i++)
             {
                 AddButtonToBoard(CreateButton(i));
             }
@@ -31,7 +30,7 @@ namespace TicTacToe.UI
 
         private Button CreateButton(int buttonIndex)
         {
-            int buttonSize = int.Parse(ConfigurationManager.AppSettings["ButtonSizeInPixels"]);
+            const int buttonSize = 100;
 
             var button = new Button
             {
