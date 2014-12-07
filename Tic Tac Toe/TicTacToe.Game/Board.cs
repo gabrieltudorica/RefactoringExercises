@@ -9,19 +9,7 @@ namespace TicTacToe.Game
         public Board()
         {
             cells = CreateCells();
-        }
-
-        private static string[] CreateCells()
-        {
-            var cells = new List<string>();
-
-            for (int i = 0; i < Config.CellCount; i++)
-            {
-                cells.Add(string.Empty);
-            }
-
-            return cells.ToArray();
-        }              
+        }          
 
         public IEnumerable<string> GetCells()
         {
@@ -58,5 +46,17 @@ namespace TicTacToe.Game
         {
             cells[cellIndex] = symbol;
         }
+
+        private static string[] CreateCells()
+        {
+            var cells = new List<string>();
+
+            for (int i = 0; i < Config.CellCount; i++)
+            {
+                cells.Add(string.Empty);
+            }
+
+            return cells.ToArray();
+        }    
     }   
 }

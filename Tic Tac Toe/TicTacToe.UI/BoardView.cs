@@ -28,6 +28,11 @@ namespace TicTacToe.UI
             }
         }
 
+        private void AddButtonToBoard(Button button)
+        {
+            board.Controls.Add(button);
+        }
+
         private Button CreateButton(int buttonIndex)
         {
             const int buttonSize = 100;
@@ -42,18 +47,13 @@ namespace TicTacToe.UI
             button.Click += OnButton_Click;
 
             return button;
-        }
+        }        
 
         private void OnButton_Click(object sender, EventArgs e)
         {
             var button = (Button)sender;
             presenter.MarkMove(int.Parse(button.Name));
-        }
-
-        private void AddButtonToBoard(Button button)
-        {
-            board.Controls.Add(button);
-        }
+        }        
 
         public void Update(ViewModel viewModel)
         {
